@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planovoo - Travel Companion</title>
+  <!-- Include Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    
+    header {
+      background: #0077cc;
+      color: #fff;
+      padding: 10px 20px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+    
+    nav ul li {
+      margin: 0 15px;
+    }
+    
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+    
+    /* Page Sections */
+    .page {
+      display: none;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    h1, h2 {
+      margin-bottom: 15px;
+      color: #0077cc;
+    }
+    
+    /* Weather Section */
+    #weather canvas {
+      max-width: 100%;
+      margin: 20px auto;
+    }
+    
+    #weatherData {
+      margin-top: 20px;
+      padding: 10px;
+      background: #eef;
+      border-radius: 5px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#" data-page="home">Home</a></li>
+        <li><a href="#" data-page="trip-planner">Trip Planner</a></li>
+        <li><a href="#" data-page="weather">Weather</a></li>
+        <li><a href="#" data-page="attractions">Attractions</a></li>
+        <li><a href="#" data-page="flight-hotel">Flight & Hotel</a></li>
+        <li><a href="#" data-page="dashboard">Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Home Page -->
+  <section id="home" class="page active">
+    <h1>Welcome to Planovoo</h1>
+    <div class="search-box">
+      <input type="text" placeholder="Enter your destination..." />
+      <button id="search-btn">Search</button>
+    </div>
+  </section>
+  
+  <!-- Weather Page -->
+  <section id="weather" class="page">
+    <h1>Weather Forecast</h1>
+    <p>Check the current and forecasted weather conditions for your destination.</p>
+    <!-- Canvas for the weather chart -->
+    <canvas id="weatherChart" width="600" height="300"></canvas>
+    <!-- Container to display API data -->
+    <div id="weatherData">
+      <p>Loading weather data...</p>
+    </div>
+  </section>
+  
+  <!-- (Other sections such as Trip Planner, Attractions, Flight & Hotel, Dashboard would go here) -->
+  
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
