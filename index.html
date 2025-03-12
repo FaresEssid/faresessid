@@ -80,57 +80,25 @@
       border-radius: 5px;
     }
     
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-      }
-      
-      nav ul li {
-        margin: 10px 0;
-      }
+    /* Coordinate Input Section */
+    #coordinateInput {
+      margin-top: 20px;
+      padding: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      max-width: 400px;
     }
-  </style>
-</head>
-<body>
-  <!-- Header with Navigation -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#" data-page="home">Home</a></li>
-        <li><a href="#" data-page="trip-planner">Trip Planner</a></li>
-        <li><a href="#" data-page="weather">Weather</a></li>
-        <li><a href="#" data-page="attractions">Attractions</a></li>
-        <li><a href="#" data-page="flight-hotel">Flight & Hotel</a></li>
-        <li><a href="#" data-page="dashboard">Dashboard</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <!-- Home Page -->
-  <section id="home" class="page active">
-    <h1>Welcome to Planovoo</h1>
-    <div class="search-box">
-      <input type="text" placeholder="Enter your destination..." />
-      <button id="search-btn">Search</button>
-    </div>
-  </section>
-  
-  <!-- Weather Page -->
-  <section id="weather" class="page">
-    <h1>Weather Forecast</h1>
-    <p>Check the current and forecasted weather conditions for your destination.</p>
-    <!-- Canvas for the weather chart -->
-    <canvas id="weatherChart" width="600" height="300"></canvas>
-    <!-- Container to display API data -->
-    <div id="weatherData">
-      <p>Loading weather data...</p>
-    </div>
-  </section>
-  
-  <!-- (Other sections such as Trip Planner, Attractions, Flight & Hotel, Dashboard would go here) -->
-  
-  <!-- Link to the external JavaScript file -->
-  <script src="script.js"></script>
-</body>
-</html>
+    
+    #coordinateInput label {
+      margin-right: 5px;
+    }
+    
+    #coordinateInput input {
+      margin: 5px 10px 5px 0;
+      padding: 5px;
+      width: 120px;
+    }
+    
+    #coordinateInput button {
+      padding: 5px 10px;
+      background: #0077c
