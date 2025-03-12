@@ -1,6 +1,6 @@
-// Function to fetch weather data from the Open-Meteo API
+// Function to fetch weather data from the Open-Meteo API using dynamic coordinates
 function fetchWeatherData(latitude, longitude) {
-  // Construct the API URL with provided coordinates
+  // Construct the API URL with the provided latitude and longitude
   const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_hours,wind_speed_10m_max,rain_sum&current_weather=true&timezone=auto`;
   
   fetch(apiUrl)
@@ -12,7 +12,7 @@ function fetchWeatherData(latitude, longitude) {
     })
     .then(data => {
       console.log('Weather Data:', data);
-      // Update the chart using hourly data
+      // Update the chart using hourly temperature data
       updateWeatherChart(data.hourly.temperature_2m, data.hourly.time);
       // Display some of the API data on the page
       displayWeatherData(data);
@@ -73,11 +73,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   
-  // Example: Use fixed coordinates (New York City) for fetching weather data.
-  // Replace with dynamic coordinates or user input as needed.
-  const latitude = 40.7128;
-  const longitude = -74.0060;
-  fetchWeatherData(latitude, longitude);
+  // Remove any initial fetch call. Instead, wait for user input.
+  
+  // Add event listener for the "Get Weather" button
+  document.getElementById('getWeatherBtn').addEventListener('click', function() {
+    // Retrieve user-provided coordinates
+    const latitudeInput = document.getElementById('latitude').value;
+    const longitudeInput = document.getElementById('longitude').value;
+    
+    // Validate input (ensure they are not empty)
+    if (!latitudeInput || !longitudeInput) {
+      alert("Please enter both latitude and longitude.");
+      return;
+    }
+    
+    // Call the API with the user-supplied coordinates
+    fetchWeatherData(latitudeInput, longitudeInput);
+  });
 });
 
 // Navigation: Show the corresponding page when a nav link is clicked.
@@ -97,5 +109,3 @@ navLinks.forEach(link => {
     });
   });
 });
-
-// (Additional JavaScript for other pages or features can be added here)
